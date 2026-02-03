@@ -1,0 +1,56 @@
+# Oracle Simphony Community Connector Spec
+# This file defines the specification for the connector including
+# connection parameters and allowlist options.
+
+# ============================================================================
+# Connection Parameters
+# These are provided when creating the Unity Catalog connection.
+# ============================================================================
+connection:
+  parameters:
+    - name: bearer_token
+      type: string
+      required: true
+      description: >
+        OAuth 2.0 Bearer token for Oracle Simphony BI API authentication.
+        This token is used in the Authorization header for all API requests.
+
+    - name: org_identifier
+      type: string
+      required: true
+      description: >
+        Unique organization identifier used in API URL path.
+        Example: "DNB" for organization DNB.
+
+    - name: loc_ref
+      type: string
+      required: false
+      description: >
+        (Optional) Location reference to filter specific locations.
+        Comma-separated for multiple: "29,30,31".
+        If not provided, fetches all active locations automatically.
+        Example: "29" for single location, or "29,30" for multiple locations.
+
+    - name: base_url
+      type: string
+      required: true
+      description: >
+        Your Oracle Simphony instance base URL including the /bi/v1 path.
+        Format: https://{instance}.hospitality.oracleindustry.com/bi/v1
+        Example: https://dnb02-ohra-prod.hospitality.oracleindustry.com/bi/v1
+
+    - name: timeout
+      type: string
+      required: false
+      description: >
+        Request timeout in seconds. Defaults to 30 if not specified.
+        Example: "60" for 60 second timeout.
+
+# ============================================================================
+# External Options Allowlist
+# These table-specific options must be included in the externalOptionsAllowList
+# parameter of the UC connection to allow them to be passed through.
+# Use a comma-separated string of option names.
+# If no table-specific options are needed, set to empty string or omit.
+# ============================================================================
+external_options_allowlist: "bus_dt"

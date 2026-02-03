@@ -15,3 +15,10 @@ venv/
 
 # Dev configs
 sources/**/configs/dev_*.json
+sources/oracle_simphony/configs/dev_config.json
+
+# Environment variables
+.env
+*.env
+**/.env
+**/*.env

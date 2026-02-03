@@ -64,6 +64,8 @@ class LakeflowConnectTester:
         # Keys are table names, values are dicts of options for that table.
         self._table_configs: Dict[str, Dict[str, Any]] = table_configs
         self.test_results: List[TestResult] = []
+        self.connector = None
+        self.connector_test_utils = None
 
     def run_all_tests(self) -> TestReport:
         """Run all available tests and return a comprehensive report"""
